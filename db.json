@@ -1,0 +1,68 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "hieudeptrai1",
+      "password": "123456",
+      "email": "hieuml19xx@gmail.com",
+      "phone": "0966961824",
+      "address": "Đông Anh"
+    },
+    {
+      "id": "2",
+      "username": "hieudeptrai2",
+      "password": "123456",
+      "email": "hieuml19xxx@gmail.com",
+      "phone": "0966961824",
+      "address": "Đông Anh"
+    },
+    {
+      "id": "3",
+      "username": "hieudeptrai3",
+      "password": "123456",
+      "email": "hieuml19xxxx@gmail.com",
+      "phone": "0966961824",
+      "address": "Đông Anh"
+    },
+    {
+      "id": "4",
+      "username": "hieudeptrai4",
+      "password": "123456",
+      "email": "hieuml19xxxxx@gmail.com",
+      "phone": "0966961824",
+      "address": "Đông Anh"
+    },
+    {
+      "id": "5",
+      "username": "hieudeptrai5",
+      "password": "123456",
+      "email": "hieuml19xxxxxx@gmail.com",
+      "phone": "0966961824",
+      "address": "Đông Anh"
+    },
+    {
+      "username": "hieudeptrai3",
+      "password": "123456",
+      "email": "hieuml19xxxx@gmail.com",
+      "phone": "0966961824",
+      "address": "Hà nội",
+      "id": "aT7wjuu"
+    },
+    {
+      "username": "abcdefgh",
+      "password": "123456",
+      "email": "ducminhh1999@gmail.com",
+      "phone": "0987120758",
+      "address": "Viet Nam",
+      "id": "Kb7CMUW"
+    },
+    {
+      "username": "hieudeptrai1",
+      "password": "123456",
+      "email": "hieuml19xx@gmail.com",
+      "phone": "0966961824",
+      "address": "Đông Anh",
+      "id": "_Gjto7u"
+    }
+  ]
+}
