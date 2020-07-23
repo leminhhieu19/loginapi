@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom'
 import services from "../services/Api";
 
 const LoginScreen = () => {
+
     let loggedIn = true;
 
     const token = localStorage.getItem("token")
@@ -58,15 +59,13 @@ const LoginScreen = () => {
             console.log(error)
             alert("Register failed");
         }
-        console.log(loggedIn)
-
 
     };
-
     if (loggedIn) {
         return <Redirect to={`/todos/view/${user.id}`} />
     };
-    return (
+    
+    return (       
         <StyledLoginRegister>
             <div className="wrapper">
                 <div className="title">
@@ -76,28 +75,14 @@ const LoginScreen = () => {
                     <div className="form">
                         <div className="inputfield">
                             <label>Username</label>
-                            <input
-                                type="text"
-                                class="input"
-                                name="username"
-                                value={username}
-                                onChange={e => onChange(e)}
-
-                            />
+                            <input type="text" class="input" name="username" value={username} onChange={e => onChange(e)}  />
                         </div>
                         <div className="inputfield">
                             <label>Password</label>
-                            <input
-                                type="password"
-                                className="input"
-                                name="password"
-                                value={password}
-                                onChange={e => onChange(e)}
-                            />
+                            <input type="password" className="input" name="password" value={password} onChange={e => onChange(e)} />
                         </div>
                         <div className="inputfield">
-                            <input type="submit" value="Login" className="btn"
-                            />
+                            <input type="submit" value="Login" className="btn"/>
                         </div>
                     </div>
                 </form>
