@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 export let loggedIn = false;
 
-const View = () => {
+const View = memo(function() {
     const [user, setUser] = useState({
         username: "",
         password: "",
@@ -24,18 +24,18 @@ const View = () => {
     };
     return (
 <>
-            <h1 className="">User Id: {id}</h1>
+            <h1>User Id: {id}</h1>
             <hr />
-            <ul className="">
-                <li className="">User name: {user.username}</li>
-                <li className="">Password: {user.password}</li>
-                <li className="">Email: {user.email}</li>
-                <li className="">Phone: {user.phone}</li>
-                <li className="">Address: {user.address}</li>
+            <ul>
+                <li>User name: {user.username}</li>
+                <li>Password: {user.password}</li>
+                <li>Email: {user.email}</li>
+                <li>Phone: {user.phone}</li>
+                <li>Address: {user.address}</li>
             </ul>
-            <Link className="" to="/activeVideo">Exit</Link>
+            <Link className="exit" to="/Oive66jrwBs">Exit</Link>
             </>
     );
-};
+});
 
 export default View;
