@@ -1,7 +1,7 @@
-import React from "react";
+import React, {memo} from "react";
 import StyledLoginRegister from "../components/styles/StyledLoginRegister";
 
-const ForgotPassScreen = () => {
+const ForgotPassScreen = memo( function() {
     return (
         <StyledLoginRegister>
             <div className="wrapper">
@@ -33,6 +33,6 @@ const ForgotPassScreen = () => {
             </div>
         </StyledLoginRegister >
     );
-};
+});
 
 export default ForgotPassScreen;
