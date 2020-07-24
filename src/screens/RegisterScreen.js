@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import StyledLoginRegister from "../components/styles/StyledLoginRegister";
 import { useHistory } from 'react-router-dom';
 import services from "../services/Api";
 
 
-const RegisterScreen = () => {
+const RegisterScreen = memo( function() {
     let history = useHistory();
     const [item, setUser] = useState({
         id: "",
@@ -52,7 +52,7 @@ const RegisterScreen = () => {
                     <div className="form">
                         <div className="inputfield">
                             <label>Username</label>
-                            <input
+                            <input title="Tên người dùng chỉ chứa những chữ cái viết thường!"
                                 type="text"
                                 className="input"
                                 name="username"
@@ -62,7 +62,7 @@ const RegisterScreen = () => {
                         </div>
                         <div className="inputfield">
                             <label>Password</label>
-                            <input
+                            <input title="Password ít nhất 6 ký tự"
                                 type="password"
                                 className="input"
                                 name="password"
@@ -72,7 +72,7 @@ const RegisterScreen = () => {
                         </div>
                         <div className="inputfield">
                             <label>Email Address</label>
-                            <input
+                            <input title="eg: abc123@gmail.com"
                                 type="text"
                                 className="input"
                                 name="email"
@@ -82,7 +82,7 @@ const RegisterScreen = () => {
                         </div>
                         <div className="inputfield">
                             <label>Phone Number</label>
-                            <input
+                            <input title="0987xxxxxx"
                                 type="text"
                                 className="input"
                                 name="phone"
@@ -92,7 +92,7 @@ const RegisterScreen = () => {
                         </div>
                         <div className="inputfield">
                             <label>Address</label>
-                            <textarea
+                            <textarea title="eg: 92 Triệu Việt Vương"
                                 className="textarea"
                                 name="address"
                                 value={address}
@@ -111,6 +111,6 @@ const RegisterScreen = () => {
             </div>
         </StyledLoginRegister >
     );
-};
+});
 
 export default RegisterScreen;
