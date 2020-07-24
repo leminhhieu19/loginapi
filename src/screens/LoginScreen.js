@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import StyledLoginRegister from "../components/styles/StyledLoginRegister";
 import { Link } from "react-router-dom";
 import { Redirect } from 'react-router-dom'
 import services from "../services/Api";
 
-const LoginScreen = () => {
+const LoginScreen = memo( function() {
 
     let loggedIn = true;
 
@@ -39,7 +39,7 @@ const LoginScreen = () => {
     const submitForm = e => {
         e.preventDefault()
         try {
-            if (password === "" || username === "") {
+            if (password === "" || username === "") {   
                 alert('You need to fill in all the information!!!')
                 return true;
             }
@@ -57,7 +57,7 @@ const LoginScreen = () => {
             });
         } catch (error) {
             console.log(error)
-            alert("Register failed");
+           alert("Register failed");
         }
 
     };
@@ -87,11 +87,11 @@ const LoginScreen = () => {
                     </div>
                 </form>
                 <div className="forgot">
-                    <Link className="" to="/auths/forgotpassword">Forgot password</Link>
+                    <Link to="/auths/forgotpassword">Forgot password</Link>
                 </div>
             </div>
         </StyledLoginRegister >
     );
-}
+})
 
 export default LoginScreen;
