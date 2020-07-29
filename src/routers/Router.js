@@ -1,27 +1,38 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React, { useCallback } from "react";
+import { BrowserRouter,Redirect, Route, Switch } from 'react-router-dom';
 import GlobalStyle from '../components/styles/GlobalStyle';
 import Header from '../screens/Header';
-import LoginScreen from '../screens/LoginScreen';
-import RegisterScreen from '../screens/RegisterScreen';
-import ForgotScreen from '../screens/ForgotScreen';
-import WbnPlayer from '../components/containers/WbnPlayer';
-import View from '../screens/View';
-
-const Router = () => (
-    <>
+import checkAuth from '../screens/jwts/CheckAuth';
+import appRouters from './Index';
+function Router() {
+    const AuthRoute = ({ component: Component, ...rest }) => (
+        <Route {...rest} render={props => (
+            checkAuth() ? (
+                <Component {...props} />
+            ) : (
+                    <Redirect to={{ pathname: '/' }} />
+                )
+        )} />
+    )
+    const renderRouter = useCallback(() =>
+        appRouters.map((router, index) => {
+            return (
+                <AuthRoute
+                    key={index.toString()}
+                    path={`${router.parentPath}${router.path}`}
+                    component={router.component}
+                    exact={router.exact === true}
+                />
+            );
+        }), []);
+    return (
         <BrowserRouter basename="/react_videoplayer/">
             <Header />
-                <Switch>
-                    <Route exact path="/:activeVideo" component={WbnPlayer} />
-                    <Route exact path="/todos/view/:id" component={View} />
-                    <Route exact path="/auths/login" component={LoginScreen} />
-                    <Route exact path="/auths/register" component={RegisterScreen} />
-                    <Route exact path="/auths/forgotpassword" component={ForgotScreen} />
-                </Switch>
+            <Switch>
+                {renderRouter()}
+            </Switch>
             <GlobalStyle />
         </BrowserRouter>
-    </>
-
-)
+    );
+}
 export default Router;
