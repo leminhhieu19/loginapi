@@ -1,0 +1,180 @@
+{
+	"id": "48f5062f-da0a-43c6-a6e7-ab8140c2e17b",
+	"name": "Milky",
+	"description": "",
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}"
+			}
+		]
+	},
+	"events": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7967e898-b13b-4bcb-9299-9438cd45cab6",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "05a4f80b-6f37-4524-a622-fcaf39c2716f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variables": [],
+	"order": [],
+	"folders_order": [
+		"580a6442-0877-4594-84f7-87d26073657c",
+		"d6ff2b88-fbaa-4630-9faa-543e5e954e13"
+	],
+	"protocolProfileBehavior": {},
+	"folders": [
+		{
+			"id": "580a6442-0877-4594-84f7-87d26073657c",
+			"name": "Auth",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "48f5062f-da0a-43c6-a6e7-ab8140c2e17b",
+			"folder": null,
+			"order": [
+				"f97fd7eb-83b5-47e8-9ee0-e3670ee59ef7",
+				"aaee8c79-bd53-4475-963c-3a91dd0cdeb7",
+				"c6a0b2b4-ff2e-4800-be3b-0239c3cc772b"
+			],
+			"folders_order": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"id": "d6ff2b88-fbaa-4630-9faa-543e5e954e13",
+			"name": "User",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "48f5062f-da0a-43c6-a6e7-ab8140c2e17b",
+			"folder": null,
+			"order": [
+				"4802cd4a-7988-4568-ae34-75d3b6fb20fb"
+			],
+			"folders_order": [],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"requests": [
+		{
+			"id": "4802cd4a-7988-4568-ae34-75d3b6fb20fb",
+			"name": "Get User Info",
+			"url": "{{url}}/users/me",
+			"description": null,
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "d6ff2b88-fbaa-4630-9faa-543e5e954e13",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "aaee8c79-bd53-4475-963c-3a91dd0cdeb7",
+			"name": "Login",
+			"url": "https://milky-auth.herokuapp.com/login",
+			"description": null,
+			"data": [],
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": "raw",
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9615ffc7-d958-4cd3-aceb-529d60bd85b4",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"try {",
+							"    const {access_token} = pm.response.json().result;",
+							"    pm.environment.set(\"access_token\", access_token);",
+							"    ",
+							"} catch(err) {",
+							"    ",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "580a6442-0877-4594-84f7-87d26073657c",
+			"rawModeData": "{\n\t\"userName\": \"chienvu123\",\n\t\"password\": \"123123a@\"\n}",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "c6a0b2b4-ff2e-4800-be3b-0239c3cc772b",
+			"name": "Change Password",
+			"url": "{{url}}/change-password",
+			"description": null,
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "580a6442-0877-4594-84f7-87d26073657c",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "f97fd7eb-83b5-47e8-9ee0-e3670ee59ef7",
+			"name": "Register",
+			"url": "{{url}}/register",
+			"description": null,
+			"data": [],
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": "raw",
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "580a6442-0877-4594-84f7-87d26073657c",
+			"rawModeData": "{\n\t\"email\": \"chienvu12345@gmail.com\",\n\t\"password\": \"123123a@\",\n\t\"user_name\": \"chienvu12354\",\n\t\"name\": \"vu manh chien\",\n    \"address_address\": \"hanoi, vietnam\",\n    \"phone\": \"0123456789\"\n}",
+			"headers": "",
+			"pathVariables": {}
+		}
+	]
+}
